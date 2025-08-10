@@ -1,18 +1,19 @@
 
-# Realtime Threat Guardian
+# Who am I?
 
-A production-leaning demo of an **Agentic AI–assisted, event-driven backend** for real‑time threat detection.
-It ingests security logs via an HTTP API, runs them through a pluggable detection pipeline (rule-based + LLM),
-emits alerts, and exposes **Prometheus metrics** for observability.
+A production-leaning demo of a scalable, event-driven backend for real-time threat detection.
+It ingests security logs via an HTTP API, processes them through a pluggable detection pipeline (rule-based + LLM), emits alerts, and exposes Prometheus metrics for observability.
 
-> Designed as a portfolio-friendly project to showcase **backend + streaming + observability + AI integration**.
+Engineered a real-time analytics engine with FastAPI and Kafka (Redpanda) for event streaming, demonstrating expertise in high-throughput backend systems.
+
+Designed a pluggable detection pipeline with both rule-based logic and a stub LLM function, showcasing an extensible architecture for AI integration.Instrumented the system with a Prometheus Client for custom metrics and observability, enabling monitoring of key performance indicators like processing latency.This portfolio project was designed to showcase expertise in backend, streaming, and observability with AI integration.
 
 ---
 
 ## Highlights
 - **FastAPI** backend with **async ingestion** and a background worker
-- **Pluggable detectors** (signature/rule-based + LLM stub you can wire to OpenAI, Claude, or local LLMs)
-- **Alert routing hooks** (stdout + optional Slack webhook)
+- **Pluggable detectors** (signature/rule-based + LLM -> you can wire to OpenAI, Claude, or local LLMs)
+- **Alert routing hooks** (stdout + Slack webhook)
 - **Prometheus metrics** at `/metrics`: event throughput, processing latency, alerts count, error count
 - Clean, minimal codebase you can extend (Kafka, PostgreSQL, LangGraph, etc.)
 
@@ -26,7 +27,7 @@ python -m venv .venv && source .venv/bin/activate  # on Windows: .venv\Scripts\a
 pip install -r requirements.txt
 ```
 
-### 2) (Optional) Configure LLM + Slack
+### 2) Configure LLM + Slack
 Create `.env` file (or export env vars directly):
 ```
 OPENAI_API_KEY=sk-...
@@ -67,7 +68,7 @@ Open http://localhost:8000/metrics to see Prometheus metrics.
 
 ---
 
-## Roadmap (nice extensions)
+## Roadmap 
 - Swap in **Kafka** for the in-memory queue
 - Add **PostgreSQL** for alert persistence + simple dashboard
 - Implement **rate limiting** (token bucket) on `/ingest`
@@ -77,14 +78,14 @@ Open http://localhost:8000/metrics to see Prometheus metrics.
 ---
 
 ## License
-MIT — you can use this for your portfolio or company demos.
+MIT — you can use this for your portfolio or anything useful.
 
 
 ---
 
-## Enable Real LLM Detection (OpenAI-compatible)
+## Enable Real LLM Detection
 
-Set these env vars (supports OpenAI-compatible endpoints):
+Set these env vars (supports LLM-compatible endpoints):  
 
 ```bash
 export LLM_ENABLED=true
@@ -94,12 +95,14 @@ export OPENAI_MODEL=gpt-4o-mini       # or any chat-completions model
 # export OPENAI_BASE_URL=https://api.openai.com/v1
 ```
 
-Run the app and send events as usual. If the API errors or no key is set, the detector **falls back** to a keyword-based stub so the service keeps running.
+Run the app and send events as usual. 
 
+For exploration; you can keep it easy by using a stub version by using a keyword-based stub so the service keeps running. 
 
+for contributions : use any LLM API and extend as you like! 
 ---
 
-## Kafka (optional, for real streaming)
+## Kafka 
 
 This service can consume events from Kafka (Redpanda). A minimal local setup is included in `docker-compose.yml`.
 
@@ -116,20 +119,4 @@ python kafka_producer.py
 # the running app will consume it and process normally
 ```
 
----
-
-## Use a **local** LLM to stay free (and truthful)
-
-You can connect a free **local OpenAI-compatible** endpoint so you can truthfully claim “LLM-connected” without cloud costs:
-- **Ollama**: run `ollama serve` and an OpenAI-compatible bridge (e.g., `openai-compatible` plugin) or use LM Studio below.
-- **LM Studio**: enable the **OpenAI-compatible server** in settings, pick a lightweight model, and copy the base URL.
-
-Then set:
-```bash
-export LLM_ENABLED=true
-export OPENAI_API_KEY=dummy-key
-export OPENAI_BASE_URL=http://127.0.0.1:1234/v1   # example LM Studio server URL
-export OPENAI_MODEL=my-local-model
-```
-
-The detector will call your local endpoint; if it fails, it **falls back** to the stub so the pipeline keeps running.
+#Thanks for checking it out :) 
