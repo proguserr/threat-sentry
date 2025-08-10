@@ -105,11 +105,11 @@ for contributions : use any LLM API and extend as you like!
 
 ## Kafka 
 
-This service can consume events from Kafka (Redpanda). A minimal local setup is included in `docker-compose.yml`.
+This service can consume events from Kafka. A minimal local setup is included in `docker-compose.yml`.
 
-Start Redpanda:
+Start Kafka locally:
 ```bash
-docker compose up -d redpanda
+docker compose up -d kafka
 export KAFKA_BROKERS=localhost:9092
 export KAFKA_TOPIC=security-events
 ```
