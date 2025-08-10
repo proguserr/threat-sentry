@@ -112,11 +112,15 @@ docker compose up -d kafka
 export KAFKA_BROKERS=localhost:9092
 export KAFKA_TOPIC=security-events
 ```
+##Test
 
 Send a sample message into Kafka:
 ```bash
 python kafka_producer.py
 # the running app will consume it and process normally
 ```
+OR use Realtime Feeds 
 
+AlienVault OTX: https://otx.alienvault.com/
+CIRCL’s AIL feed: https://www.circl.lu/services/misp-feed/
 #Thanks for checking it out :) 
