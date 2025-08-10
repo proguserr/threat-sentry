@@ -1,12 +1,13 @@
 
 # Who am I?
 
-A production-leaning demo of a scalable, event-driven backend for real-time threat detection.
-It ingests security logs via an HTTP API, processes them through a pluggable detection pipeline (rule-based + LLM), emits alerts, and exposes Prometheus metrics for observability.
+This project is basicaly a production-leaning demo of a scalable, event-driven backend for real-time threat detection. It ingests security logs over an HTTP API, streams them through Kafka, processes them in a detection pipeline, and sends out alerts. I’ve also instrumented it with Prometheus metrics so the system’s health and performance are always visible.
 
-Engineered a real-time analytics engine with FastAPI and Kafka (Redpanda) for event streaming, demonstrating expertise in high-throughput backend systems.
+Designed it to handle high-throughput workloads. Kafka decouples ingestion from processing, letting each scale independently. The async architecture ensures low-latency detection without dropping messages, even under heavy load.
 
-Designed a pluggable detection pipeline with both rule-based logic and a stub LLM function, showcasing an extensible architecture for AI integration.Instrumented the system with a Prometheus Client for custom metrics and observability, enabling monitoring of key performance indicators like processing latency.This portfolio project was designed to showcase expertise in backend, streaming, and observability with AI integration.
+The detection pipeline is fully modular.Rules can be updated without redeploying, and the LLM component can be swapped or extended as needed. With Prometheus I tracked throughput, latency, and alert patterns in real time, making it easier to catch performance bottlenecks before they escalate.
+
+While compact, the codebase uses patterns you’d find in production systems: streaming for scalability, loose coupling for reliability, and observability built in from the start.
 
 ---
 
