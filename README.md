@@ -1,5 +1,5 @@
 
-# Who am I?
+# About me
 
 This project is basicaly a production-leaning demo of a scalable, event-driven backend for real-time threat detection. It ingests security logs over an HTTP API, streams them through Kafka, processes them in a detection pipeline, and sends out alerts. I’ve also instrumented it with Prometheus metrics so the system’s health and performance are always visible.
 
