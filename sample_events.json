@@ -1,0 +1,17 @@
+
+[
+  {
+    "timestamp": "2025-08-09T12:00:00Z",
+    "source": "web-firewall",
+    "ip": "203.0.113.5",
+    "message": "Multiple failed logins detected; possible brute force",
+    "severity": "Warn"
+  },
+  {
+    "timestamp": "2025-08-09T12:01:00Z",
+    "source": "api-gateway",
+    "ip": "198.51.100.77",
+    "message": "UNION SELECT * FROM users --",
+    "severity": "Error"
+  }
+]
