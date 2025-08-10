@@ -97,7 +97,7 @@ export OPENAI_MODEL=gpt-4o-mini       # or any chat-completions model
 ```
 
 Run the app and send events as usual. 
-
+```bash
 For exploration; you can keep it easy by using a stub version by using a keyword-based stub so the service keeps running. 
 For contributions : use any LLM API and extend as you like! 
 ---
